@@ -864,6 +864,62 @@ void motorControl(int input1Pin, int input2Pin, int enablePin, int speed) {
 </details>
 
 
+<details>
+<summary> 4 CROSS 4 MATRIX KEYPAD </summary>
+
+### source code
+```
+#include <Keypad.h>
+
+const byte ROW_NUM    = 4; // four rows
+const byte COLUMN_NUM = 4; // four columns
+
+char keys[ROW_NUM][COLUMN_NUM] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'}
+};
+
+byte pin_rows[ROW_NUM]    = {9, 8, 7, 6}; // connect to the row pinouts of the keypad
+byte pin_column[COLUMN_NUM] = {5, 4, 3, 2}; // connect to the column pinouts of the keypad
+
+Keypad myKeypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_NUM);
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  char key = myKeypad.getKey();
+
+  if (key) {
+    Serial.println(key);
+    // Perform actions based on the pressed key
+  }
+}
+```
+
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/e3bd176f-029b-431f-ad99-d0f4ee81c788)
+
+
+### wiring
+
++ Connect the keypad's ROW1-ROW4 pins to digital pins 9-6 on the Arduino.
++ Connect the keypad's COL1-COL4 pins to digital pins 5-2 on the Arduino.
+
+
+### output
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/8a23ef9b-c3d7-4485-87a2-5a8d53061a8a)
+
+
+</details>
+
+
 
 
 
