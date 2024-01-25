@@ -866,7 +866,9 @@ void motorControl(int input1Pin, int input2Pin, int enablePin, int speed) {
 
 <details>
 <summary> 4 CROSS 4 MATRIX KEYPAD </summary>
+<br>
 
+  
 ### source code
 ```
 #include <Keypad.h>
@@ -921,7 +923,9 @@ void loop() {
 
 <details>
 <summary> BLUETOOTH HC05 </summary>
+<br>
 
+  
 ### source code
 
 ```
@@ -967,7 +971,7 @@ void loop() {
 
 <details>
 <summary> SERVO MOTOR </summary>
-
+<br>
 
 ### source code
 
