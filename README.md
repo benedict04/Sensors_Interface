@@ -965,6 +965,55 @@ void loop() {
 </details>
 
 
+<details>
+<summary> SERVO MOTOR </summary>
+
+
+### source code
+
+```
+#include <Servo.h>
+
+Servo myServo; // Create a Servo object
+
+int servoPin = 9; // Connect the servo signal wire to digital pin 9
+
+void setup() {
+  myServo.attach(servoPin); // Attach the servo to the specified pin
+}
+
+void loop() {
+  // Sweep the servo from 0 to 180 degrees
+  for (int angle = 0; angle <= 180; angle += 1) {
+    myServo.write(angle);
+    delay(15);
+  }
+
+  delay(1000); // Pause for 1 second
+
+  // Sweep the servo from 180 to 0 degrees
+  for (int angle = 180; angle >= 0; angle -= 1) {
+    myServo.write(angle);
+    delay(15);
+  }
+
+  delay(1000); // Pause for 1 second
+}
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/277245e3-2df9-4206-9057-4b7975ca8a17)
+
+
+### wiring
+
++ Connect the servo signal wire to digital pin 9.
++ Connect the servo power wire to the Arduino's 5V.
++ Connect the servo ground wire to the Arduino's GND.
+
+</details>
+
 
 
 
