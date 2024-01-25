@@ -734,6 +734,75 @@ void loop() {
 + Connect a power supply to the stepper motor driver.
 
 
+## DC MOTOR
+
+### source code
+
+```
+// Motor A
+const int motorAPin1 = 9;   // Input 1 for Motor A
+const int motorAPin2 = 10;  // Input 2 for Motor A
+const int enableAPin = 11;  // PWM Speed Control for Motor A
+
+void setup() {
+  pinMode(motorAPin1, OUTPUT);
+  pinMode(motorAPin2, OUTPUT);
+  pinMode(enableAPin, OUTPUT);
+
+  // Set motor speed to zero initially
+  analogWrite(enableAPin, 0);
+}
+
+void loop() {
+  // Move the motor forward
+  motorControl(motorAPin1, motorAPin2, enableAPin, 255);
+  delay(2000);  // Run for 2 seconds
+
+  // Stop the motor
+  motorControl(motorAPin1, motorAPin2, enableAPin, 0);
+  delay(1000);  // Pause for 1 second
+
+  // Move the motor backward
+  motorControl(motorAPin2, motorAPin1, enableAPin, 255);
+  delay(2000);  // Run for 2 seconds
+
+  // Stop the motor
+  motorControl(motorAPin1, motorAPin2, enableAPin, 0);
+  delay(1000);  // Pause for 1 second
+}
+
+// Function to control the motor speed and direction
+void motorControl(int input1Pin, int input2Pin, int enablePin, int speed) {
+  // Set motor direction based on the sign of the speed
+  if (speed > 0) {
+    digitalWrite(input1Pin, HIGH);
+    digitalWrite(input2Pin, LOW);
+  } else if (speed < 0) {
+    digitalWrite(input1Pin, LOW);
+    digitalWrite(input2Pin, HIGH);
+  } else {
+    digitalWrite(input1Pin, LOW);
+    digitalWrite(input2Pin, LOW);
+  }
+
+  // Set motor speed (PWM)
+  analogWrite(enablePin, abs(speed));
+}
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/dc03efa6-6299-40e0-96c9-32e227d39c9b)
+
+
+### wiring
+
++ Connect the L298N Input 1 pin to digital pin 9 on the Arduino.
++ Connect the L298N Input 2 pin to digital pin 10 on the Arduino.
++ Connect the L298N Enable pin to digital pin 11 on the Arduino.
++ Connect the DC motor to the output terminals of Motor A on the L298N.
++ Connect a power supply to the motor driver (be sure to share the ground with the Arduino).
+
 
 
 
