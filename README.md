@@ -10,7 +10,10 @@ It's a software platform used for programming and uploading code to Arduino micr
 - Launch Arduino IDE 2.0 from your computer's application menu or by running the executable.
 - Upon the first run, you may be prompted to select a workspace location. Choose or create a directory where your Arduino projects will be stored.
 
-## ULTRASONIC SENSOR HC-SR04
+<details>
+  
+<summary> ULTRASONIC SENSOR HC-SR04 </summary>
+<br>
 
 ### source code
 ```
@@ -65,7 +68,11 @@ void loop() {
 ![us_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/013d6da6-5eb2-4e48-bccc-c73cf5b73354)
 
 
-## PASSIVE INFRARED SENSOR HC-SR505
+</details>
+
+<details>
+<summary> PASSIVE INFRARED SENSOR HC-SR505 </summary>
+<br>
 
 ### source code
 
@@ -109,7 +116,11 @@ void loop() {
 ![PIR_SS](https://github.com/benedict04/Sensors_Interface/assets/109859485/fe1c3f0b-db68-4d74-942b-f32de6cc465d)
 
 
-## IR PROXIMITY
+</details>
+
+<details>
+<summary> IR PROXIMITY </summary>
+<br>
 
 ### source code
 
@@ -153,7 +164,11 @@ void loop() {
 ![irp_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/9492c888-4eb5-4aba-bc75-660354ac7aaf)
 
 
-## DHT 11 TEMPERATURE SENSOR
+</details>
+
+<details>
+<summary> DHT 11 TEMPERATURE SENSOR </summary>
+<br>
 
 ### source code
 
@@ -203,7 +218,11 @@ void loop() {
 ![dht_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/f9a6b594-07d6-48af-8099-b1f2e5fdc34b)
 
 
-## BMP180 SENSOR
+</details>
+
+<details>
+<summary> BMP180 SENSOR </summary>
+<br>
 
 ### source code
 
@@ -251,7 +270,11 @@ void loop() {
 ![bmp_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/c9277213-337b-4328-88a4-d0323ba74e6f)
 
 
-## JOYSTICK
+</details>
+
+<details>
+<summary> JOYSTICK </summary>
+<br>
 
 
 ### source code
@@ -332,7 +355,11 @@ void loop() {
 ![ss_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/84583ce6-5338-4224-88fc-5ac71e87872d)
 
 
-## ROTARY ENCODER
+</details>
+
+<details>
+<summary> ROTARY ENCODER </summary>
+<br>
 
 ### source code
 
@@ -399,7 +426,11 @@ void updateEncoder() {
 ![rm_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/9f3aca68-679a-4dbe-b20b-3b47c2a23268)
 
 
-## LIGHT DEPENDENT RESISTOR 
+</details>
+
+<details>
+<summary> LIGHT DEPENDENT RESISTOR </summary>
+<br>
 
 
 ###source code
@@ -441,7 +472,11 @@ void loop() {
 ![ldr_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/3e14b360-c94d-4968-99ec-2055cf3ac36a)
 
 
-## LM35 TEMPERATURE SENSOR
+</details>
+
+<details>
+<summary> LM35 TEMPERATURE SENSOR </summary>
+<br>
 
 ### source code 
 
@@ -486,7 +521,11 @@ void loop() {
 ![lm_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/4868213f-49fa-4c7f-9719-23c7adb02bde)
 
 
-## 7 SEGMENT DISPLAY
+</details>
+
+<details>
+<summary> 7 SEGMENT DISPLAY </summary>
+<br>
 
 ### source code
 
@@ -550,7 +589,11 @@ void displayNumber(int number) {
 + Connect each segment pin (a, b, c, d, e, f, g) to the corresponding digital pins (2, 3, 4, 5, 6, 7, 8).
 
 
-## HALL SENSOR
+</details>
+
+<details>
+<summary> HALL SENSOR </summary>
+<br>
 
 ### source code
 
@@ -592,7 +635,11 @@ void loop() {
 ![hs_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/b24d62d2-6fc9-42d1-b7d5-b4d7a84a2080)
 
 
-## POTENTIOMETER
+</details>
+
+<details>
+<summary> POTENTIOMETER </summary>
+<br>
 
 ### source code
 
@@ -633,7 +680,11 @@ void loop() {
 ![pm_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/2264807a-f38d-47f4-b63c-9850f1f9b671)
 
 
-## LIQUID CRYSTAL DISPLAY
+</details>
+
+<details>
+<summary> LIQUID CRYSTAL DISPLAY </summary>
+<br>
 
 ### source code
 
@@ -679,8 +730,11 @@ void loop() {
 + Connect the LCD VDD (power) pin to the Arduino's 5V.
 + Connect the LCD V0 (contrast) pin to a potentiometer (adjustable resistor) and connect the other end of the potentiometer to GND.
 
+</details>
 
-## STEPPER MOTOR
+<details>
+<summary> STEPPER MOTOR </summary>
+<br>
 
 
 ### source code
@@ -734,7 +788,11 @@ void loop() {
 + Connect a power supply to the stepper motor driver.
 
 
-## DC MOTOR
+</details>
+
+<details>
+<summary> DC MOTOR </summary>
+<br>
 
 ### source code
 
@@ -803,6 +861,7 @@ void motorControl(int input1Pin, int input2Pin, int enablePin, int speed) {
 + Connect the DC motor to the output terminals of Motor A on the L298N.
 + Connect a power supply to the motor driver (be sure to share the ground with the Arduino).
 
+</details>
 
 
 
