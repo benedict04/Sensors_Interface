@@ -919,6 +919,51 @@ void loop() {
 
 </details>
 
+<details>
+<summary> BLUETOOTH HC05 </summary>
+
+### source code
+
+```
+// Pin configuration for HC-05 Bluetooth module
+const int rxPin = 2;   // Rx pin on the Arduino, connect to Tx pin on HC-05
+const int txPin = 3;   // Tx pin on the Arduino, connect to Rx pin on HC-05
+
+void setup() {
+  Serial.begin(9600);  // Serial communication with HC-05
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    // Read and store the entire string from Bluetooth module
+    String receivedString = Serial.readStringUntil('\n');
+
+    // Print the received string to the Serial Monitor
+    Serial.print("Received: ");
+    Serial.println(receivedString);
+  }
+}
+```
+
+### circuit diagram
+
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/3bde096b-86a5-41bf-914a-d1c317b741c7)
+
+
+### wiring
+
++ Connect the HC-05 Rx pin to digital pin 2 (Arduino Tx).
++ Connect the HC-05 Tx pin to digital pin 3 (Arduino Rx).
++ Connect the HC-05 VCC pin to the Arduino's 5V.
++ Connect the HC-05 GND pin to the Arduino's GND.
+
+### output
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/3e77ae3d-61b2-4097-a131-11988d40fccb)
+
+</details>
+
 
 
 
