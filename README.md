@@ -633,6 +633,55 @@ void loop() {
 ![pm_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/2264807a-f38d-47f4-b63c-9850f1f9b671)
 
 
+## LIQUID CRYSTAL DISPLAY
+
+### source code
+
+```
+#include <LiquidCrystal.h>
+
+// Pin configuration for LCD
+const int rs = 12;   // Register select pin
+const int en = 11;   // Enable pin
+const int d4 = 5;    // Data pin 4
+const int d5 = 4;    // Data pin 5
+const int d6 = 3;    // Data pin 6
+const int d7 = 2;    // Data pin 7
+
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+void setup() {
+  lcd.begin(16, 2);  // Initialize the LCD with 16 columns and 2 rows
+  lcd.print("Hello, Arduino!");
+}
+
+void loop() {
+  // Your code here
+}
+
+```
+
+### circuit diagram
+
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/0b98ddfc-3266-4b40-980b-600965bedf60)
+
+
+### wiring
+
++ Connect the LCD RS pin to digital pin 12.
++ Connect the LCD EN pin to digital pin 11.
++ Connect the LCD D4 pin to digital pin 5.
++ Connect the LCD D5 pin to digital pin 4.
++ Connect the LCD D6 pin to digital pin 3.
++ Connect the LCD D7 pin to digital pin 2.
++ Connect the LCD VSS (ground) pin to the Arduino's GND.
++ Connect the LCD VDD (power) pin to the Arduino's 5V.
++ Connect the LCD V0 (contrast) pin to a potentiometer (adjustable resistor) and connect the other end of the potentiometer to GND.
+
+
+
+
 
 
 
