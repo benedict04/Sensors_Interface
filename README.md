@@ -680,6 +680,60 @@ void loop() {
 + Connect the LCD V0 (contrast) pin to a potentiometer (adjustable resistor) and connect the other end of the potentiometer to GND.
 
 
+## STEPPER MOTOR
+
+
+### source code
+
+```
+#include <AccelStepper.h>
+
+// Define the motor connections
+const int stepPin = 2;
+const int dirPin = 3;
+
+// Create an AccelStepper object
+AccelStepper stepper(1, stepPin, dirPin);
+
+void setup() {
+  // Set the maximum speed and acceleration
+  stepper.setMaxSpeed(1000);
+  stepper.setAcceleration(500);
+
+  // Set the initial position
+  stepper.setCurrentPosition(0);
+}
+
+void loop() {
+  // Move the stepper motor 200 steps in one direction
+  stepper.moveTo(200);
+  stepper.run();
+
+  delay(1000);  // Pause for 1 second
+
+  // Move the stepper motor 200 steps in the opposite direction
+  stepper.moveTo(0);
+  stepper.run();
+
+  delay(1000);  // Pause for 1 second
+}
+
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/08021cb9-1594-460f-9dcd-ed595e7983ac)
+
+
+
+### wiring
+
++ Connect the driver's step pin to digital pin 2 on the Arduino.
++ Connect the driver's dir pin to digital pin 3 on the Arduino.
++ Connect the stepper motor to the output terminals of the driver.
++ Connect a power supply to the stepper motor driver.
+
+
 
 
 
