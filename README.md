@@ -399,6 +399,242 @@ void updateEncoder() {
 ![rm_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/9f3aca68-679a-4dbe-b20b-3b47c2a23268)
 
 
+## LIGHT DEPENDENT RESISTOR 
+
+
+###source code
+
+```
+const int ldrPin = A0;  // Connect the LDR to analog pin A0
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read the analog value from the LDR
+  int ldrValue = analogRead(ldrPin);
+
+  // Print the LDR value to the Serial Monitor
+  Serial.print("LDR Value: ");
+  Serial.println(ldrValue);
+
+  delay(500);  // Delay for stability
+}
+
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/4440c107-c6c4-4b28-bb63-b4c201b5bddc)
+
+
+### wiring
+
++ Connect one leg of the LDR to the Arduino's 5V.
++ Connect the other leg of the LDR to the analog pin A0 on the Arduino.
++ Connect a resistor from the same leg of the LDR to the GND on the Arduino.
+
+
+### output
+
+![ldr_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/3e14b360-c94d-4968-99ec-2055cf3ac36a)
+
+
+## LM35 TEMPERATURE SENSOR
+
+### source code 
+
+```
+const int lm35Pin = A0;  // Connect the LM35 to analog pin A0
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read the analog value from the LM35
+  int lm35Value = analogRead(lm35Pin);
+
+  // Convert the analog value to temperature in Celsius
+  float temperatureCelsius = (lm35Value / 1024.0) * 500.0;
+
+  // Print the temperature to the Serial Monitor
+  Serial.print("Temperature: ");
+  Serial.print(temperatureCelsius);
+  Serial.println(" °C");
+
+  delay(1000);  // Delay for stability
+}
+
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/a34ef6d5-08ee-4598-88ee-24791aaad1c2)
+
+
+### wiring
+
++ Connect the LM35's VCC to the Arduino's 5V.
++ Connect the LM35's GND to the Arduino's GND.
++ Connect the LM35's OUT to analog pin A0 on the Arduino.
+
+
+### output
+
+![lm_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/4868213f-49fa-4c7f-9719-23c7adb02bde)
+
+
+## 7 SEGMENT DISPLAY
+
+### source code
+
+```
+// Pin mapping for common cathode seven-segment display
+const int segmentPins[] = {2, 3, 4, 5, 6, 7, 8};  // Connect these pins to segments a, b, c, d, e, f, and g
+const int digitPin = 9;                              // Connect this pin to the common cathode pin
+
+void setup() {
+  for (int i = 0; i < 7; i++) {
+    pinMode(segmentPins[i], OUTPUT);
+  }
+  pinMode(digitPin, OUTPUT);
+}
+
+void loop() {
+  // Display numbers 0 to 9 on the seven-segment display
+  for (int i = 0; i < 10; i++) {
+    displayNumber(i);
+    delay(1000);
+  }
+}
+
+void displayNumber(int number) {
+  // Define the segments for each digit
+  const byte digitSegments[] = {
+    B0111111,  // 0
+    B0000110,  // 1
+    B1011011,  // 2
+    B1001111,  // 3
+    B1100110,  // 4
+    B1101101,  // 5
+    B1111101,  // 6
+    B0000111,  // 7
+    B1111111,  // 8
+    B1101111   // 9
+  };
+
+  // Activate the segments for the given number
+  for (int i = 0; i < 7; i++) {
+    bool isSegmentActive = bitRead(digitSegments[number], i);
+    digitalWrite(segmentPins[i], isSegmentActive ? HIGH : LOW);
+  }
+
+  // Activate the display
+  digitalWrite(digitPin, LOW);
+  delay(5);  // A small delay to improve visibility
+  digitalWrite(digitPin, HIGH);
+}
+
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/f0987df1-482c-4e7b-aa8e-cf7addd2d445)
+
+
+### wiring
+
++ Connect the common cathode pin of the seven-segment display to the digitPin (pin 9).
++ Connect each segment pin (a, b, c, d, e, f, g) to the corresponding digital pins (2, 3, 4, 5, 6, 7, 8).
+
+
+## HALL SENSOR
+
+### source code
+
+```
+const int hallSensorPin = 2;  // Connect the Hall sensor signal pin to digital pin 2
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(hallSensorPin, INPUT);
+}
+
+void loop() {
+  // Read the state of the Hall sensor
+  int hallState = digitalRead(hallSensorPin);
+
+  // Print the state to the Serial Monitor
+  Serial.println(hallState);
+
+  delay(500);  // Delay for stability
+}
+
+```
+
+### circuit diagram
+
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/852a6ea0-48c4-44e7-aadc-0c4c4f9e005d)
+
+
+### wiring
+
++ Connect the signal pin of the Hall sensor module to digital pin 2 on the Arduino.
++ Connect the VCC pin of the Hall sensor module to the Arduino's 5V.
++ Connect the GND pin of the Hall sensor module to the Arduino's GND.
+
+
+### output
+
+![hs_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/b24d62d2-6fc9-42d1-b7d5-b4d7a84a2080)
+
+
+## POTENTIOMETER
+
+### source code
+
+```
+const int potentiometerPin = A0;  // Connect the potentiometer to analog pin A0
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read the analog value from the potentiometer
+  int potValue = analogRead(potentiometerPin);
+
+  // Print the potentiometer value to the Serial Monitor
+  Serial.println(potValue);
+
+  delay(100);  // Delay for stability
+}
+
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/c938c3e3-0f5e-49d3-b563-f81deb6a0ce3)
+
+
+### wiring
+
++ Connect one leg of the potentiometer to the Arduino's 5V.
++ Connect the other leg of the potentiometer to the Arduino's GND.
++ Connect the middle pin (wiper) of the potentiometer to analog pin A0 on the Arduino.
+
+
+### output
+
+
+![pm_ss](https://github.com/benedict04/Sensors_Interface/assets/109859485/2264807a-f38d-47f4-b63c-9850f1f9b671)
+
+
+
+
 
 
 
