@@ -1019,6 +1019,74 @@ void loop() {
 </details>
 
 
+<details>
+
+  <summary> LDR and DHT11 real time values on LCD </summary>
+
+<br>
+
+### source code
+
+```
+#include <DHT.h>
+#include <LiquidCrystal.h>
+
+#define DHTPIN 2  // Pin where the DHT11 is connected
+#define DHTTYPE DHT11  // DHT sensor type
+#define LDRPIN A0  // Pin where the LDR is connected
+
+DHT dht(DHTPIN, DHTTYPE);
+
+// Initialize the LCD
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);  // Pins: RS, E, D4, D5, D6, D7
+
+void setup() {
+  lcd.begin(16, 2);
+  lcd.print("Temp:    LDR:");
+  lcd.setCursor(0, 1);
+  lcd.print("Loading...");
+
+  dht.begin();
+}
+
+void loop() {
+  delay(2000);  // Wait for 2 seconds between measurements
+
+  float temperature = dht.readTemperature();
+  int ldrValue = analogRead(LDRPIN);
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(temperature, 1);
+  lcd.print(" ");
+  lcd.write(223);  // Degree symbol
+  lcd.print("C");
+
+  lcd.setCursor(8, 0);
+  lcd.print("LDR: ");
+  lcd.print(ldrValue);
+
+  lcd.setCursor(0, 1);
+  lcd.print("Light: ");
+  if (ldrValue > 800) {
+    lcd.print("Bright");
+  } else if (ldrValue > 400) {
+    lcd.print("Moderate");
+  } else {
+    lcd.print("Dark");
+  }
+}
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/c1b199ae-ef11-4d1a-b436-f2dc3d80734d)
+
+
+</details>
+
+
 
 
 
