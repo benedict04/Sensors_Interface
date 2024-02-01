@@ -1087,6 +1087,84 @@ void loop() {
 </details>
 
 
+<details>
+
+<summary> Data logging real time values of sensors on excel sheet </summary>
+<br>
+
+## DHT11 , LDR AND GAS CONCENTRATION SENSORS
+
+### source code
+
+```
+#include <DHT.h>
+
+#define DHTPIN 2  // Pin where the DHT11 is connected
+#define DHTTYPE DHT11  // DHT sensor type
+
+int ldrPin = A0;  // Pin where the LDR is connected
+int gasPin = A1;  // Pin where the gas sensor is connected
+
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+}
+
+void loop() {
+  // Read DHT11 sensor data
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
+
+  // Read LDR sensor data
+  int ldrValue = analogRead(ldrPin);
+
+  // Read gas sensor data (replace with your specific gas sensor code)
+  int gasValue = analogRead(gasPin);
+
+  // Print sensor values to Serial Monitor
+  Serial.print("Humidity: ");
+  Serial.print(humidity);
+  Serial.print("%, Temperature: ");
+  Serial.print(temperature);
+  Serial.println("°C");
+
+  Serial.print("LDR Value: ");
+  Serial.println(ldrValue);
+
+  Serial.print("Gas Sensor Value: ");
+  Serial.println(gasValue);
+
+  delay(2000);  // Delay for 2 seconds before reading again
+}
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/609927b1-f7ff-4f49-b566-afbf5fa2a0ee)
+
+
+### wiring
+
++ Connect the VCC pin of the DHT11 to 5V on the Arduino.
++ Connect the GND pin of the DHT11 to GND on the Arduino.
++ Connect the data pin (OUT) of the DHT11 to pin 2 on the Arduino.
++ Connect one leg of the LDR to the 5V on the Arduino.
++ Connect the other leg of the LDR to the A0 analog input pin on the Arduino.
++ Connect a resistor (around 10kΩ) from the same leg of the LDR connected to A0 to GND on the Arduino.
++ Connect the VCC pin of the gas sensor to 5V on the Arduino.
++ Connect the GND pin of the gas sensor to GND on the Arduino.
++ Connect the analog output pin of the gas sensor to A1 on the Arduino.
++ Connect the digital output pin of the gas sensor to a digital pin on the Arduino (if available, you may not need this depending on your specific gas sensor).
+
+
+### excel sheet output
+
+
+
+</details>
+
 
 
 
