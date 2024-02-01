@@ -1162,6 +1162,8 @@ void loop() {
 ### excel sheet output
 
 
+![assign_pic](https://github.com/benedict04/Sensors_Interface/assets/109859485/3064bd4f-45c3-4456-9fe1-1195322dc59c)
+
 
 </details>
 
