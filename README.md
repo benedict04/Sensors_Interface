@@ -1168,6 +1168,69 @@ void loop() {
 </details>
 
 
+<details>
+  <summary> RFID SENSOR </summary>
+<br>
+
+### source code
+
+```
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define SS_PIN 10
+#define RST_PIN 9
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);  // Create MFRC522 instance
+
+void setup() {
+  Serial.begin(9600); // Initialize serial communication
+  SPI.begin(); // Init SPI bus
+  mfrc522.PCD_Init(); // Init MFRC522
+  Serial.println("Scan RFID tag...");
+}
+
+void loop() {
+  // Look for new cards
+  if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial()) {
+    // Show UID on serial monitor
+    Serial.print("Tag UID:");
+    for (byte i = 0; i < mfrc522.uid.size; i++) {
+      Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
+      Serial.print(mfrc522.uid.uidByte[i], HEX);
+    }
+    Serial.println();
+    mfrc522.PICC_HaltA(); // Halt PICC
+    mfrc522.PCD_StopCrypto1(); // Stop encryption on PCD
+    delay(1000); // Delay before next read
+  }
+}
+```
+
+### circuit diagram
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/f3956d60-ce29-4109-af74-a9a6197fda7e)
+
+
+### wiring 
+
++ VCC: Connect to Arduino 3.3V pin
++ RST (Reset): Connect to Arduino digital pin 9
++ GND: Connect to Arduino GND pin
++ MISO: Connect to Arduino digital pin 12
++ MOSI: Connect to Arduino digital pin 11
++ SCK: Connect to Arduino digital pin 13
++ SDA: Connect to Arduino digital pin 10
+
+### output
+
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/3d31e6b4-453d-437a-9839-9465f2b6ae4a)
+
+
+</details>
+
+
 
 
 
