@@ -1231,6 +1231,49 @@ void loop() {
 </details>
 
 
+<details>
+  <summary> Fire Sensor </summary>
+  <br>
+
+  ### source code
+
+  ```
+#define FLAME_SENSOR_PIN A0 // Define flame sensor pin
+
+void setup() {
+  Serial.begin(9600); // Initialize serial communication
+  pinMode(FLAME_SENSOR_PIN, INPUT); // Set flame sensor pin as input
+}
+
+void loop() {
+  int flameValue = analogRead(FLAME_SENSOR_PIN); // Read flame sensor value
+  
+  if (flameValue > 500) { // Adjust this threshold according to your sensor's sensitivity
+    Serial.println("Fire detected!"); // Print message indicating fire detection
+  }
+  
+  delay(1000); // Delay for stability
+}
+```
+
+### circuit diagram
+
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/46a0a736-33fa-4df4-bb3b-29a9d9e61568)
+
+
+### wiring
+
++ VCC: Connect to Arduino 5V pin
++ GND: Connect to Arduino GND pin
++ Analog Output: Connect to Arduino analog pin A0
+
+### output
+
+![image](https://github.com/benedict04/Sensors_Interface/assets/109859485/342a2740-77d5-4850-9949-82e86231a3d0)
+
+</details>
+
 
 
 
